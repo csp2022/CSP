@@ -11,6 +11,6 @@ secretkey = str(sys.argv[2])
 print(accesskey, secretkey)
 
 
-client = boto3.client('ec2', region_name='us-west-2', aws_access_key_id=accesskey, aws_secret_access_key=secretkey)
+client = boto3.client('ec2', region_name = 'us-west-2', aws_access_key_id = accesskey, aws_secret_access_key = secretkey)
 
 client.create_default_vpc()
