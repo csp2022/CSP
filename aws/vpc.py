@@ -2,6 +2,6 @@
 
 import boto3
 
-client = boto3.client('ec2', region_name = 'us-west-2') # Adjust as desired
+client = boto3.client('ec2', region_name='us-west-2') # Adjust as desired
 
 client.create_default_vpc()
