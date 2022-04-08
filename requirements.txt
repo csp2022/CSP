@@ -1,0 +1,6 @@
+boto3==0.0.1
+
+azure-identity
+azure-mgmt-resource
+
+google-api-python-client
