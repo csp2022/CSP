@@ -4,6 +4,13 @@ import boto3
 import os
 import sys
 
-client = boto3.client('ec2', region_name='us-west-2', aws_access_key_id='sys.argv[1]', aws_secret_access_key='sys.argv[2]')
+print(type(sys.argv[1]))
+accesskey = str(sys.argv[1])
+secretkey = str(sys.argv[2])
+
+print(accesskey, secretkey)
+
+
+client = boto3.client('ec2', region_name='us-west-2', aws_access_key_id=accesskey, aws_secret_access_key=secretkey)
 
 client.create_default_vpc()
