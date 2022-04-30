@@ -1,3 +1,0 @@
-#variable "myaccesskey"{
-#type = string
-#}
