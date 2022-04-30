@@ -1,2 +1,0 @@
-variable "fname"{}
-variable "lname"{}
