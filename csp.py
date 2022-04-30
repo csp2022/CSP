@@ -1,19 +1,22 @@
 """
-This project is intended to provision resources in AWS,AZURE and GCP cloud platforms using Python tool
+This module is intended to provision resources in AWS,AZURE and GCP cloud platforms
 """
 import os,sys,json
 from aws.provision import cloud_provision
 utils_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(utils_dir, 'utils'))
 from logger import CspLogger as logger
-# this function is to take inputs from the user
-def inputdata():
+
+def inputs_data():
+    '''
+    this function is to take inputs from the user
+    '''
     try:
         logger.info("hey this is from Try stmt")
     except:
         logger.info("hey this is from Except stmt")
 
-def cloud_provision1():
+def cloud_provision():
 
     if cloud_platform == 'AWS' or cloud_platform == 'aws':
         aws = aws_provision()
