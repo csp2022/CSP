@@ -1,6 +1,6 @@
 Project Title
 =====================
-Terraform is used to provision and manage IT Infrastructure
+This project is intended to provision infrastructure on AWS, Azure and GCP.
 
 Pre-Requisites
 ============================
