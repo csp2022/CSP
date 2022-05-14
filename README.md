@@ -2,6 +2,9 @@ Project Title
 =====================
 This project is intended to provision infrastructure on AWS, Azure and GCP.
 
+AWS
+======
+
 Pre-Requisites
 ============================
 Step 1: Launch EC2 instance and execute the below commands
@@ -17,6 +20,15 @@ $sudo yum -y install terraform
 
 Execution Flow
 =====================
+
+Step 1: Login to EC2 instance
+
+$vi aws_export.sh
+export AWS_ACCESS_KEY_ID=""
+export AWS_SECRET_ACCESS_KEY=""
+
+$source aws_export.sh
+
 
 step 1: clone repo
 
