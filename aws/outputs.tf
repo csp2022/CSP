@@ -1,3 +1,4 @@
-output "webserverpublic_ip"{
-value = "${module.instances.webserver_publicip}"
+output "webserver_public_ip" {
+  value = aws_instance.webserver.public_ip
 }
+

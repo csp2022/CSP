@@ -3,10 +3,6 @@
 
 "myregion" : "us-east-1",
 
-"myaccesskey" : "",
-
-"mysecretkey" : "",
-
-"myamiid" : ""
+"myamiid" : "ami-0affd4508a5d2481b"
 
 }

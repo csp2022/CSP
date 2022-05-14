@@ -1,6 +1,8 @@
 # Local .terraform directories
 **/.terraform/*
-
+export.sh
+*_export.sh
+*export.sh
 # .tfstate files
 *.tfstate
 *.tfstate.*
