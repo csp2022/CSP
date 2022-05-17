@@ -5,7 +5,7 @@ This project is intended to provision infrastructure on AWS, Azure and GCP.
 Pre-Requisites
 ============================
 $ sh hardening.sh reference: https://github.com/krishnamaram2/webapp
-
+Create keypair
 
 Execution Flow
 =====================
