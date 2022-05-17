@@ -17,7 +17,7 @@ $sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hash
 
 $sudo yum -y install terraform
 
-Step 2: Create key pair
+Step 2: Create key pair and IAM access keys for authentication
 
 
 Execution Flow
@@ -64,7 +64,7 @@ $sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hash
 
 $sudo yum -y install terraform
 
-Step 2: Createproject and service account
+Step 2: Createproject and service account keys for authentication
 
 
 Execution Flow
