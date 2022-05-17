@@ -17,6 +17,8 @@ $sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hash
 
 $sudo yum -y install terraform
 
+Step 2: Create key pair
+
 
 Execution Flow
 =====================
@@ -43,3 +45,13 @@ $terraform init .
 $terraform validate 
 
 $terraform apply 
+
+Azure
+########
+
+
+GCP
+#######
+Pre-Requisites
+################
+Step 1: Create project and service account
