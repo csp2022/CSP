@@ -26,7 +26,9 @@ Execution Flow
 Step 1: Login to EC2 instance
 
 $vi aws_export.sh
+
 export AWS_ACCESS_KEY_ID=""
+
 export AWS_SECRET_ACCESS_KEY=""
 
 $source aws_export.sh
@@ -73,6 +75,7 @@ Execution Flow
 Step 1: Login to EC2 instance
 
 $vi gcp_export.sh
+
 export GOOGLE_APPLICATION_CREDENTIALS="/home/centos/gcp.json"
 
 $source gcp_export.sh
