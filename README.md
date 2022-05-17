@@ -47,11 +47,48 @@ $terraform validate
 $terraform apply 
 
 Azure
-########
+###
 
 
 GCP
-#######
+###
 Pre-Requisites
-################
-Step 1: Create project and service account
+============================
+Step 1: Launch EC2 instance and execute the below commands
+
+$ sudo yum install git -y
+
+$sudo yum install -y yum-utils
+
+$sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+
+$sudo yum -y install terraform
+
+Step 2: Createproject and service account
+
+
+Execution Flow
+=====================
+
+Step 1: Login to EC2 instance
+
+$vi gcp_export.sh
+export GOOGLE_APPLICATION_CREDENTIALS="/home/centos/gcp.json"
+
+$source gcp_export.sh
+
+
+
+step 1: clone repo
+
+$git clone https://github.com/csp2022/CSP.git -b dev
+
+Step 2: move to directory
+
+cd CSP/gcp
+
+$terraform init .
+
+$terraform validate 
+
+$terraform apply 
