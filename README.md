@@ -49,11 +49,11 @@ $terraform validate
 $terraform apply 
 
 Azure
-###
+=======
 
 
 GCP
-###
+=======
 Pre-Requisites
 ============================
 Step 1: Launch EC2 instance and execute the below commands
