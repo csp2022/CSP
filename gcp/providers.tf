@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
   project = "josephproject"
-  region = "us-central1"
+  region = "us-west2"
 }
 
 #resource "google_project" "my_project" {
