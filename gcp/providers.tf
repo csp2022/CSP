@@ -11,3 +11,9 @@ provider "google" {
   project = "josephproject"
   region = "us-central1"
 }
+
+#resource "google_project" "my_project" {
+#  name       = "myroject"
+#  project_id = "myprojectid"
+#}
+
