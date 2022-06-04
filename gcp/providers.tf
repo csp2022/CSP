@@ -8,12 +8,8 @@ terraform {
 }
 
 provider "google" {
+  #credentials = file("*.json") # to hard code credentials file
   project = "josephproject"
   region = "us-west2"
 }
-
-#resource "google_project" "my_project" {
-#  name       = "myroject"
-#  project_id = "myprojectid"
-#}
 
