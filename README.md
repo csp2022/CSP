@@ -55,9 +55,8 @@ Pre-Requisites
 ============================
 Step 1: Authentication to Azure : Service principal
 create 
-Azure active directory => App registrations => New registration -> Name : mysp -> Register -> Certificates & secrets -> Client secrets -> New client secret -> Add -> copy client secret
-Subscription => IAM => add role assignment => members => select members => select: mysp
-
+App registration :Azure active directory => App registrations => New registration -> Name : mysp -> Register -> Certificates & secrets -> Client secrets -> New client secret -> Add -> copy client secret
+Permission for mysp to create resoiurce group :Subscription => IAM => Add -> add role assignment -> Role : contributor -> members -> select members => select: mysp
 
 Execution Flow
 =====================
