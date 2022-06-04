@@ -2,7 +2,14 @@ Project Title
 =====================
 This project is intended to provision infrastructure on AWS, Azure and GCP.
 
-# Sandbox
+Pre-Requisites
+============================
+# Windows Local sandbox
+Download terraform(https://www.terraform.io/downloads) -> unzip file -> terraform.exe
+
+->Edit the system environment variales -> System variables -> click on Path -> enter terraform.exe file path -> New -> Ok 
+
+# Linux remote Sandbox
 Step 1: Launch EC2 instance and execute the below commands
 
 $ sudo yum install git -y
@@ -12,20 +19,12 @@ $sudo yum install -y yum-utils
 $sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 
 $sudo yum -y install terraform
-
-
 AWS
 ======
-
-Pre-Requisites
-============================
-Step 2: Create key pair and IAM access keys for authentication
-
 Execution Flow
 =====================
-
-Step 1: Login to EC2 instance
-
+Step 1: Authentication to AWS 
+IAM access keys for authentication
 $vi aws_export.sh
 
 export AWS_ACCESS_KEY_ID=""
@@ -34,6 +33,7 @@ export AWS_SECRET_ACCESS_KEY=""
 
 $source aws_export.sh
 
+Step 2: Create key pair and 
 
 step 1: clone repo
 
@@ -51,17 +51,12 @@ $terraform apply
 
 Azure
 =======
-Pre-Requisites
-============================
+Execution Flow
+=====================
 Step 1: Authentication to Azure : Service principal
 create 
 App registration :Azure active directory => App registrations => New registration -> Name : mysp -> Register -> Certificates & secrets -> Client secrets -> New client secret -> Add -> copy client secret
 Permission for mysp to create resoiurce group :Subscription => IAM => Add -> add role assignment -> Role : contributor -> members -> select members => select: mysp
-
-Execution Flow
-=====================
-
-Step 1: Login to EC2 instance
 
 $vi azure_export.sh
 
@@ -95,25 +90,20 @@ GCP
 =======
 Pre-Requisites
 ============================
-Step 2: Createproject and 
+Execution Flow
+=====================
+
 Step 1: service account keys for authentication
 IAM -> Service accounts -> create service account -> add role 
 
 click on service account -> keys -> add key 
-
-
-
-Execution Flow
-=====================
-
-Step 1: Login to EC2 instance
-
 $vi gcp_export.sh
 
 export GOOGLE_APPLICATION_CREDENTIALS="/home/centos/gcp.json"
 
 $source gcp_export.sh
 
+Step 2: Createproject and 
 
 step 1: clone repo
 
