@@ -89,11 +89,8 @@ $terraform apply
 
 GCP
 =======
-Pre-Requisites
-============================
 Execution Flow
 =====================
-
 Step 1: service account keys for authentication
 IAM -> Service accounts -> create service account -> add role 
 
