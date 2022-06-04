@@ -2,11 +2,7 @@ Project Title
 =====================
 This project is intended to provision infrastructure on AWS, Azure and GCP.
 
-AWS
-======
-
-Pre-Requisites
-============================
+# Sandbox
 Step 1: Launch EC2 instance and execute the below commands
 
 $ sudo yum install git -y
@@ -17,8 +13,13 @@ $sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hash
 
 $sudo yum -y install terraform
 
-Step 2: Create key pair and IAM access keys for authentication
 
+AWS
+======
+
+Pre-Requisites
+============================
+Step 2: Create key pair and IAM access keys for authentication
 
 Execution Flow
 =====================
@@ -52,17 +53,10 @@ Azure
 =======
 Pre-Requisites
 ============================
-Step 1: Launch EC2 instance and execute the below commands
-
-$ sudo yum install git -y
-
-$sudo yum install -y yum-utils
-
-$sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-
-$sudo yum -y install terraform
-
-Step 2: create /service principal app registration ex: mysa in Azure active directory and Subscription => IAM => add role assignment => members => select members => select: mysa
+Step 1: Authentication to Azure : Service principal
+create 
+Azure active directory => App registrations => New registration -> Name : mysp -> Register -> Certificates & secrets -> Client secrets -> New client secret -> Add -> copy client secret
+Subscription => IAM => add role assignment => members => select members => select: mysp
 
 
 Execution Flow
@@ -102,16 +96,6 @@ GCP
 =======
 Pre-Requisites
 ============================
-Step 1: Launch EC2 instance and execute the below commands
-
-$ sudo yum install git -y
-
-$sudo yum install -y yum-utils
-
-$sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-
-$sudo yum -y install terraform
-
 Step 2: Createproject and service account keys for authentication
 
 
@@ -125,7 +109,6 @@ $vi gcp_export.sh
 export GOOGLE_APPLICATION_CREDENTIALS="/home/centos/gcp.json"
 
 $source gcp_export.sh
-
 
 
 step 1: clone repo
