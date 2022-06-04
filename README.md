@@ -95,7 +95,12 @@ GCP
 =======
 Pre-Requisites
 ============================
-Step 2: Createproject and service account keys for authentication
+Step 2: Createproject and 
+Step 1: service account keys for authentication
+IAM -> Service accounts -> create service account -> add role 
+
+click on service account -> keys -> add key 
+
 
 
 Execution Flow
