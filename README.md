@@ -93,7 +93,7 @@ Execution Flow
 =====================
 Step 1: Authentication to GCP 
 service account keys for authentication
-IAM -> Service accounts -> create service account -> add role 
+IAM -> Service accounts -> create service account -> service account name : mysa -> click on CREATE AND CONTINUE ->  select a role -> Basic : owner -> continue -> done 
 
 click on service account -> keys -> add key 
 $vi gcp_export.sh
