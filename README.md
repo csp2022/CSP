@@ -91,7 +91,8 @@ GCP
 =======
 Execution Flow
 =====================
-Step 1: service account keys for authentication
+Step 1: Authentication to GCP 
+service account keys for authentication
 IAM -> Service accounts -> create service account -> add role 
 
 click on service account -> keys -> add key 
