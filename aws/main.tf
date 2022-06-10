@@ -45,6 +45,9 @@ subnet_id = "${aws_subnet.publicsubnet.id}"
 }
 
 ##############################################  Security Modules ########################
+resource "aws_key_pair" "mykp" {
+  key_name   = "mykp"
+  public_key = "${var.mykey}"
 
 resource "aws_security_group" "websg" {
   name        = "websg"
