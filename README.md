@@ -25,15 +25,14 @@ AWS
 Execution Flow
 =====================
 Step 1: Authentication to AWS 
-IAM access keys for authentication
+
 $vi aws_export.sh
 
-export AWS_ACCESS_KEY_ID=""
-
-export AWS_SECRET_ACCESS_KEY=""
+export AWS_ACCESS_KEY_ID="" && export AWS_SECRET_ACCESS_KEY=""
 
 $source aws_export.sh
 
+or 
 
 set AWS_ACCESS_KEY_ID=""
 
@@ -41,16 +40,9 @@ set AWS_SECRET_ACCESS_KEY=""
 
 $git clone https://github.com/csp2022/CSP.git -b dev
 
-Step 2: move to directory
+$cd CSP/aws
 
-cd CSP/aws
-
-vi aws_dev.json
-{
-"ami_id" : ""ami-0affd4508a5d2481b"",
-"mykey" : "",
-"myregion" : ""
-}
+$vi aws_dev.json
 
 $terraform init .
 
