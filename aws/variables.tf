@@ -2,7 +2,7 @@ variable "myregion"{
 type = string
 }
 
-variable "myamiid"{
+variable "myami"{
 type = string
 }
 

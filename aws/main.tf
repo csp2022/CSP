@@ -1,8 +1,4 @@
 ############################################ Networking modules ######################
-resource "aws_eip" "webeip"{
-instance = "${aws_instance.webserver.id}"
-}
-
 resource "aws_vpc" "myvpc"{
 cidr_block = "10.0.0.0/16"
 tags ={
@@ -16,7 +12,6 @@ tags={
 Name = "myigw"
 }
 }
-
 
 resource "aws_subnet" "publicsubnet"{
 vpc_id = "${aws_vpc.myvpc.id}"
@@ -73,10 +68,9 @@ resource "aws_security_group" "websg" {
 
 ################################################  web server #########################
 resource "aws_instance" "webserver" {
-ami = "${var.myamiid}"
+ami = "${var.myami}"
 instance_type = "t2.medium"
 subnet_id = "${aws_subnet.publicsubnet.id}"
-private_ip = "10.0.1.6"
 vpc_security_group_ids = ["${aws_security_group.websg.id}"]
 key_name = "${aws_key_pair.mykp.id}"
 tags = {
