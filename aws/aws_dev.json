@@ -1,5 +1,4 @@
 { 
-    "myregion" : "us-east-1",
-    "myami" : "ami-0affd4508a5d2481b", 
-    "mykey" : "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCFNKqW9GT24twsurWq8RpG1w8wNm0zgUKIleMmuqZq8+WEyzX1hjYJhoyt2psdH5nVvrtR98mxZ66+IB+ac17sMzr5gnrtnsxu6y1/OWXpMH4KtFMDvcMKTOerPzQ6hK9filDe6OlSZgHV6j6KHOkhSfDUJwLYOOTD5LLm8mibz8G7q7cFlgoh8LAWZdExEjtJLlSpEHcwp1pGINUAh+BOsRatSxOomTTQDeOGXNpKuTnFQXAE7f9Kr0FJx+19XDXX7ZcSzxFKFDmlLIH4yc+Jz1mBba36k2QxuB0H+zS/6IxCNOrgPOLSIKVEO14nFC+EVWDWSXU5e5cJdkUBpgJ3KCcVjOBew9Jc4RUVTZwl0r+FkrCO40HjiYiEgtzCsJryx3oHXpigqy7m1dLZgA+ivZs+JxYaM70QeYnVCxvG4PnXtfqPwtqdJ8vzBhrhxN5kFDtZxjgHdgwTDTa1Sh2ol123YdDPbajsEunVM4XG2qpexVwmn3RkPTWyKdE46U= jyoth@jojo"  
-}
+    "myregion" : "",
+    "myami" : "", 
+    "mykey" : "
