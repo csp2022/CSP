@@ -56,8 +56,8 @@ Azure
 =======
 Execution Flow
 =====================
-Step 1: Authentication to Azure : Service principal
-create 
+Step 1: Authentication to Azure : Service principal creation
+
 App registration :Azure active directory => App registrations => New registration -> Name : mysp -> Register -> Certificates & secrets -> Client secrets -> New client secret -> Add -> copy client secret
 Permission for mysp to create resoiurce group :Subscription => IAM => Add -> add role assignment -> Role : contributor -> members -> select members => select: mysp
 
@@ -93,11 +93,11 @@ GCP
 =======
 Execution Flow
 =====================
-Step 1: Authentication to GCP 
-service account keys for authentication
-IAM -> Service accounts -> create service account -> service account name : mysa -> click on CREATE AND CONTINUE ->  select a role -> Basic : owner -> continue -> done 
+Step 1: Authentication to GCP : service account keys for authentication
 
+IAM -> Service accounts -> create service account -> service account name : mysa -> click on CREATE AND CONTINUE ->  select a role -> Basic : owner -> continue -> done 
 click on service account -> keys -> add key 
+
 $vi gcp_export.sh
 
 export GOOGLE_APPLICATION_CREDENTIALS="/home/centos/gcp.json"
