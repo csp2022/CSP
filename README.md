@@ -42,6 +42,8 @@ $git clone https://github.com/csp2022/CSP.git -b dev
 
 $cd CSP/aws
 
+$ssh-keygen
+
 $vi aws_dev.json
 
 $terraform init .
