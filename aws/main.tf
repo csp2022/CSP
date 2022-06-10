@@ -43,6 +43,33 @@ subnet_id = "${aws_subnet.publicsubnet.id}"
 resource "aws_key_pair" "mykp" {
   key_name   = "mykp"
   public_key = "${var.mykey}"
+}
+
+resource "aws_network_acl" "main" {
+  vpc_id = aws_vpc.myvpc.id
+  subnet_ids = ["${aws_subnet.publicsubnet.id}"]
+  egress {
+    protocol   = "-1"
+    rule_no    = 200
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  ingress {
+    protocol   = "-1"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    from_port  = 0
+    to_port    = 0
+  }
+
+  tags = {
+    Name = "mynacl"
+  }
+}
 
 resource "aws_security_group" "websg" {
   name        = "websg"
@@ -70,6 +97,7 @@ resource "aws_security_group" "websg" {
 resource "aws_instance" "webserver" {
 ami = "${var.myami}"
 instance_type = "t2.medium"
+associate_public_ip_address = true
 subnet_id = "${aws_subnet.publicsubnet.id}"
 vpc_security_group_ids = ["${aws_security_group.websg.id}"]
 key_name = "${aws_key_pair.mykp.id}"
