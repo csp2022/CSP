@@ -1,5 +1,6 @@
 # Local .terraform directories
 *.json
+*.pem
 **/.terraform/*
 .terraform.lock.hcl
 export.sh
