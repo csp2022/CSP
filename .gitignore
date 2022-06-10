@@ -1,6 +1,7 @@
 # Local .terraform directories
 *.json
 **/.terraform/*
+.terraform*
 export.sh
 *_export.sh
 *export.sh
