@@ -78,7 +78,7 @@ instance_type = "t2.medium"
 subnet_id = "${aws_subnet.publicsubnet.id}"
 private_ip = "10.0.1.6"
 vpc_security_group_ids = ["${aws_security_group.websg.id}"]
-key_name = "virginia"
+key_name = "${aws_key_pair.mykp.id}"
 tags = {
 Name = "webserver"
 }
