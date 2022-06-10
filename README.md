@@ -34,15 +34,23 @@ export AWS_SECRET_ACCESS_KEY=""
 
 $source aws_export.sh
 
-Step 2: Create key pair and 
 
-step 1: clone repo
+set AWS_ACCESS_KEY_ID=""
+
+set AWS_SECRET_ACCESS_KEY=""
 
 $git clone https://github.com/csp2022/CSP.git -b dev
 
 Step 2: move to directory
 
 cd CSP/aws
+
+vi aws_dev.json
+{
+"ami_id" : ""ami-0affd4508a5d2481b"",
+"mykey" : "",
+"myregion" : ""
+}
 
 $terraform init .
 
