@@ -60,7 +60,7 @@ Step 1: Authentication to Azure : Service principal creation
 
 App registration :Azure active directory => App registrations => New registration -> Name : mysp -> Register -> Certificates & secrets -> Client secrets -> New client secret -> Add -> copy client secret
 
-Permission for mysp to create resource group :Subscription => IAM => Add -> add role assignment -> Role : contributor -> members -> select members => select: mysp
+Permission for mysp to create resource group :Subscription => IAM => Add -> add role assignment -> Role : contributor -> members -> select members => select: mysp => click on Review + assign
 
 $vi azure_export.sh
 
