@@ -118,4 +118,4 @@ $terraform init
 
 $terraform validate 
 
-$terraform apply 
+$terraform apply -var-file gcp_dev.json
