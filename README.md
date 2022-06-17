@@ -96,8 +96,7 @@ Execution Flow
 =====================
 Step 1: Authentication to GCP : service account keys for authentication
 
-IAM -> Service accounts -> create service account -> service account name : mysa -> click on CREATE AND CONTINUE ->  select a role -> Basic : owner -> continue -> done 
-click on service account -> keys -> add key 
+IAM -> Service accounts -> create service account -> service account name : mysa -> click on CREATE AND CONTINUE ->  select a role -> Basic : owner -> continue -> done -> click on service account -> keys -> add key 
 
 $vi gcp_export.sh
 
@@ -105,7 +104,7 @@ export GOOGLE_APPLICATION_CREDENTIALS="/home/centos/gcp.json"
 
 $source gcp_export.sh
 
-Step 2: Createproject and 
+Step 2: Create project(till now I am unable to create project using terraform due to permission issue)
 
 step 1: clone repo
 
@@ -115,7 +114,7 @@ Step 2: move to directory
 
 cd CSP/gcp
 
-$terraform init .
+$terraform init 
 
 $terraform validate 
 
