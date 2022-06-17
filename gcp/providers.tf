@@ -9,7 +9,7 @@ terraform {
 
 provider "google" {
   #credentials = file("*.json") # to hard code credentials file
-  project = "josephproject"
-  region = "us-west2"
+  project = "${var.myproject}"
+  region = "${var.myregion}"
 }
 

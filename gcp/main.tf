@@ -1,4 +1,3 @@
-
 #resource "google_project" "my_project" {
 #  name       = "myroject"
 #  project_id = "myprojectid"
@@ -14,9 +13,10 @@ resource "google_compute_network" "myvpc" {
 resource "google_compute_subnetwork" "mysubnet" {
   name          = "mysubnet"
   ip_cidr_range = "10.0.1.0/24"
-  region        = "us-west2"
+  #region        = "us-west2"
   network       = google_compute_network.myvpc.id
 }
+
 
 resource "google_compute_firewall" "myfw" {
   name    = "myfw"
@@ -25,7 +25,7 @@ resource "google_compute_firewall" "myfw" {
     protocol = "tcp"
     ports    = ["22","80","443"]
   }
-source_ranges = ["0.0.0.0"]
+source_ranges = ["0.0.0.0/0"]
 }
 
 resource "google_compute_instance" "myinstance" {
@@ -46,5 +46,9 @@ resource "google_compute_instance" "myinstance" {
     access_config {
       // Ephemeral public IP
     }
+}
+
+metadata = {
+  ssh-keys ="${var.mysshuser}:${var.mykey}"
 }
 }
