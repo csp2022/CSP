@@ -50,7 +50,7 @@ $terraform init .
 
 $terraform validate 
 
-$terraform apply 
+$terraform apply -var-file aws_dev.json
 
 Azure
 =======
@@ -87,7 +87,7 @@ $terraform init .
 
 $terraform validate 
 
-$terraform apply 
+$terraform apply -var-file azure_dev.json
 
 
 GCP
