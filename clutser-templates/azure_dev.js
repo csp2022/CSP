@@ -1,0 +1,4 @@
+{ 
+    "mylocation" : "", 
+    "mykey" : ""
+}

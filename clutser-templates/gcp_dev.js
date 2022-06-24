@@ -1,0 +1,6 @@
+{ 
+    "myproject" : "",
+    "myregion" : "",
+    "mysshuser":"",
+    "mykey" : ""
+}
