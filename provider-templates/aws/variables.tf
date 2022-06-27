@@ -2,10 +2,14 @@ variable "myregion"{
 type = string
 }
 
+variable "mycidr"{
+ type = string 
+}
+
 variable "myami"{
 type = string
 }
 
-variable "mykey"{
+variable "mypublickey"{
  type = string 
 }

@@ -13,10 +13,6 @@ myprivatesubnet = "${module.networking.myprivatesubnet}"
 mypublickey = "${var.mypublickey}"
 }
 
-module "storage"{
-source = "./modules/storage"
-}
-
 module "computing"{
 source = "./modules/computing"
 myami = "${var.myami}"
@@ -27,4 +23,7 @@ mybastionsg = "${module.security.mybastionsg}"
 mysmpdbsg = "${module.security.mysmpdbsg}"
 }
 
+module "storage"{
+source = "./modules/storage"
+}
 

@@ -1,4 +1,8 @@
-output "webserver_public_ip" {
-  value = aws_instance.webserver.public_ip
+output "myaccount" {
+  value = "${module.networking.myaccount}"
+}
+
+output "mybastionhost_public_ip" {
+  value = "${module.computing.mybastionhost_public_ip}"
 }
 

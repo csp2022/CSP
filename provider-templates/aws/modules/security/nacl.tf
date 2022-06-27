@@ -1,27 +1,59 @@
 
-##############################################  Security Modules ########################
-resource "aws_network_acl" "main" {
-  vpc_id = aws_vpc.myvpc.id
-  subnet_ids = ["${aws_subnet.publicsubnet.id}"]
-  egress {
-    protocol   = "-1"
-    rule_no    = 200
-    action     = "allow"
-    cidr_block = "0.0.0.0/0"
-    from_port  = 0
-    to_port    = 0
-  }
+############################################## NACL rules ########################
+resource "aws_network_acl" "mybastionnacl" {
+  vpc_id = "${var.myvpc}"
+  subnet_ids = ["${var.mypublicsubnet}"]
 
   ingress {
+    from_port  = 0
+    to_port    = 0
     protocol   = "-1"
     rule_no    = 100
     action     = "allow"
     cidr_block = "0.0.0.0/0"
-    from_port  = 0
-    to_port    = 0
+   
   }
 
+  egress {
+    from_port  = 0
+    to_port    = 0
+    protocol   = "-1"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    
+  }
   tags = {
-    Name = "mynacl"
+    Name = "mybastionnacl"
   }
 }
+
+
+resource "aws_network_acl" "mysmpdbnacl" {
+  vpc_id = "${var.myvpc}"
+  subnet_ids = ["${var.myprivatesubnet}"]
+
+  ingress {
+    from_port  = 0
+    to_port    = 0
+    protocol   = "-1"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+   
+  }
+
+  egress {
+    from_port  = 0
+    to_port    = 0
+    protocol   = "-1"
+    rule_no    = 100
+    action     = "allow"
+    cidr_block = "0.0.0.0/0"
+    
+  }
+  tags = {
+    Name = "mysmpdbnacl"
+  }
+}
+
