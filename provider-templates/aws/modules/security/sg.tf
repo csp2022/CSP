@@ -22,7 +22,6 @@ resource "aws_security_group" "mybastionsg" {
   }
 }
 
-}
 
 resource "aws_security_group" "mysmpdbsg" {
   name        = "mysmpdbsg"
@@ -44,6 +43,4 @@ resource "aws_security_group" "mysmpdbsg" {
   tags = {
     Name = "mysmpdbsg"
   }
-}
-
 }
