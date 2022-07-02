@@ -1,0 +1,3 @@
+variable "mydbinstance" {
+    type = string
+}

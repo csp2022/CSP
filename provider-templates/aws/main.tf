@@ -25,5 +25,6 @@ mysmpdbsg = "${module.security.mysmpdbsg}"
 
 module "storage"{
 source = "./modules/storage"
+mydbinstance = "${module.computing.mydbinstance}"
 }
 
