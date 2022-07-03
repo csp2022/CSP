@@ -17,6 +17,7 @@ module "computing"{
 source = "./modules/computing"
 myami = "${var.myami}"
 mypublicsubnet = "${module.networking.mypublicsubnet}"
+lb-subnet2 = "${module.networking.lb-subnet2}"
 myprivatesubnet = "${module.networking.myprivatesubnet}"
 mykp = "${module.security.mykp}"
 mybastionsg = "${module.security.mybastionsg}"

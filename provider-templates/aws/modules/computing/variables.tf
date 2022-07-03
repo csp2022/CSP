@@ -2,6 +2,10 @@ variable "mypublicsubnet"{
 type = string
 }
 
+variable "lb-subnet2"{
+type = string
+}
+
 variable "myprivatesubnet"{
  type = string 
 }

@@ -13,6 +13,7 @@ Name = "myigw"
 }
 }
 
+
 ############################################ Public Subnets ###############################3
 resource "aws_subnet" "mypublicsubnet"{
 vpc_id = "${aws_vpc.myvpc.id}"
@@ -41,10 +42,26 @@ route_table_id = "${aws_route_table.publicrtb.id}"
 subnet_id = "${aws_subnet.mypublicsubnet.id}"
 }
 
+
+############################################ LB Subnets ###############################3
+resource "aws_subnet" "lb-subnet2"{
+vpc_id = "${aws_vpc.myvpc.id}"
+cidr_block = "10.0.20.0/24"
+availability_zone = "us-east-1b"
+tags={
+Name = "lb-subnet2"
+}
+}
+
+resource "aws_route_table_association" "lbrtba2"{
+route_table_id = "${aws_route_table.publicrtb.id}"
+subnet_id = "${aws_subnet.lb-subnet2.id}"
+}
+
 ############################################ Private Subnets ###############################3
 resource "aws_subnet" "myprivatesubnet"{
 vpc_id = "${aws_vpc.myvpc.id}"
-cidr_block = "10.0.20.0/24"
+cidr_block = "10.0.30.0/24"
 availability_zone = "us-east-1b"
 tags={
 Name = "myprivatesubnet"
@@ -60,7 +77,7 @@ Name = "myprivatertb"
 
 resource "aws_route" "privatert"{
 route_table_id = "${aws_route_table.privatertb.id}"
-destination_cidr_block = "10.0.20.0/24"
+destination_cidr_block = "10.0.30.0/24"
 network_interface_id = "${var.mybastionhostnic}"
 }
 
