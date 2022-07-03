@@ -7,5 +7,5 @@ output "mybastionhost_public_ip" {
 }
 
 output "mydbinstance" {
-value = "${aws_instance.mydbinstance.id}"
+value = "${aws_instance.mydbinstance[0].id}"
 }

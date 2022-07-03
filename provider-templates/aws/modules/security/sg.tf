@@ -8,8 +8,8 @@ resource "aws_security_group" "mybastionsg" {
     description = "TLS from VPC"
     from_port   = 22
     to_port     = 22
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    protocol    = "tcp"
+    cidr_blocks = ["183.83.36.159/32"]
   }
   egress {
     from_port   = 0
@@ -31,7 +31,7 @@ resource "aws_security_group" "mysmpdbsg" {
     description = "TLS from VPC"
     from_port   = 22
     to_port     = 22
-    protocol    = "-1"
+    protocol    = "tcp"
     security_groups = ["${aws_security_group.mybastionsg.id}"]
   }
   egress {
