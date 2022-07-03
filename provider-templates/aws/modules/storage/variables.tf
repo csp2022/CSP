@@ -1,3 +1,3 @@
-variable "mydbinstance" {
+variable "webapp-server-1" {
     type = string
 }

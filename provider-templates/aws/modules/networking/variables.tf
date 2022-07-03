@@ -2,6 +2,6 @@ variable "mycidr"{
 type = string
 }
 
-variable "mybastionhostnic"{
+variable "bastionhostnic"{
  type = string 
 }

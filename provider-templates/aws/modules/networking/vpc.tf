@@ -12,38 +12,16 @@ tags={
 Name = "myigw"
 }
 }
-
-
-############################################ Public Subnets ###############################3
-resource "aws_subnet" "mypublicsubnet"{
+############################################ LB Subnets ###############################
+resource "aws_subnet" "lb-subnet1"{
 vpc_id = "${aws_vpc.myvpc.id}"
 cidr_block = "10.0.10.0/24"
 availability_zone = "us-east-1a"
 tags={
-Name = "mypublicsubnet"
+Name = "lb-subnet1"
 }
 }
 
-resource "aws_route_table" "publicrtb"{
-vpc_id = "${aws_vpc.myvpc.id}"
-tags = {
-Name = "mypublicrtb"
-}
-}
-
-resource "aws_route" "publicrt"{
-route_table_id = "${aws_route_table.publicrtb.id}"
-destination_cidr_block = "0.0.0.0/0"
-gateway_id = "${aws_internet_gateway.myigw.id}"
-}
- 
-resource "aws_route_table_association" "publicrtba"{
-route_table_id = "${aws_route_table.publicrtb.id}"
-subnet_id = "${aws_subnet.mypublicsubnet.id}"
-}
-
-
-############################################ LB Subnets ###############################3
 resource "aws_subnet" "lb-subnet2"{
 vpc_id = "${aws_vpc.myvpc.id}"
 cidr_block = "10.0.20.0/24"
@@ -53,37 +31,75 @@ Name = "lb-subnet2"
 }
 }
 
+resource "aws_route_table" "lb-rtb"{
+vpc_id = "${aws_vpc.myvpc.id}"
+tags = {
+Name = "lb-rtb"
+}
+}
+
+resource "aws_route" "publicrt"{
+route_table_id = "${aws_route_table.lb-rtb.id}"
+destination_cidr_block = "0.0.0.0/0"
+gateway_id = "${aws_internet_gateway.myigw.id}"
+}
+ 
+resource "aws_route_table_association" "lbrtba1"{
+route_table_id = "${aws_route_table.lb-rtb.id}"
+subnet_id = "${aws_subnet.lb-subnet1.id}"
+}
+
 resource "aws_route_table_association" "lbrtba2"{
-route_table_id = "${aws_route_table.publicrtb.id}"
+route_table_id = "${aws_route_table.lb-rtb.id}"
 subnet_id = "${aws_subnet.lb-subnet2.id}"
 }
 
-############################################ Private Subnets ###############################3
-resource "aws_subnet" "myprivatesubnet"{
+############################################ webapp Subnets ###############################3
+resource "aws_subnet" "webapp-subnet1"{
 vpc_id = "${aws_vpc.myvpc.id}"
 cidr_block = "10.0.30.0/24"
-availability_zone = "us-east-1b"
+availability_zone = "us-east-1c"
 tags={
-Name = "myprivatesubnet"
+Name = "webapp-subnet1"
 }
 }
 
-resource "aws_route_table" "privatertb"{
+resource "aws_subnet" "webapp-subnet2"{
+vpc_id = "${aws_vpc.myvpc.id}"
+cidr_block = "10.0.40.0/24"
+availability_zone = "us-east-1d"
+tags={
+Name = "webapp-subnet2"
+}
+}
+
+resource "aws_route_table" "webapp-rtb"{
 vpc_id = "${aws_vpc.myvpc.id}"
 tags = {
-Name = "myprivatertb"
+Name = "webapp-rtb"
 }
 }
 
-resource "aws_route" "privatert"{
-route_table_id = "${aws_route_table.privatertb.id}"
+resource "aws_route" "webapp-rt1"{
+route_table_id = "${aws_route_table.webapp-rtb.id}"
 destination_cidr_block = "10.0.30.0/24"
-network_interface_id = "${var.mybastionhostnic}"
+network_interface_id = "${var.bastionhostnic}"
 }
 
-resource "aws_route_table_association" "privatertba"{
-route_table_id = "${aws_route_table.privatertb.id}"
-subnet_id = "${aws_subnet.myprivatesubnet.id}"
+resource "aws_route" "webapp-rt2"{
+route_table_id = "${aws_route_table.webapp-rtb.id}"
+destination_cidr_block = "10.0.40.0/24"
+network_interface_id = "${var.bastionhostnic}"
+}
+
+resource "aws_route_table_association" "webapp-rtba1"{
+route_table_id = "${aws_route_table.webapp-rtb.id}"
+subnet_id = "${aws_subnet.webapp-subnet1.id}"
+}
+
+resource "aws_route_table_association" "webapp-rtba2"{
+route_table_id = "${aws_route_table.webapp-rtb.id}"
+subnet_id = "${aws_subnet.webapp-subnet2.id}"
 }
 
 
@@ -108,8 +124,8 @@ resource "aws_subnet" "rds_subnet2" {
   }
 }
 
-resource "aws_db_subnet_group" "mydbsubnetgroup" {
-  name       = "mydbsubnetgroup"
+resource "aws_db_subnet_group" "db-subnet-group" {
+  name       = "db-subnet-group"
   subnet_ids = ["${aws_subnet.rds_subnet1.id}","${aws_subnet.rds_subnet2.id}"]
   tags = {
     Name = "My DB subnet group"

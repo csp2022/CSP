@@ -2,11 +2,11 @@ variable "myvpc"{
 type = string
 }
 
-variable "mypublicsubnet"{
+variable "lb-subnet1"{
  type = string 
 }
 
-variable "myprivatesubnet"{
+variable "webapp-subnet1"{
 type = string
 }
 

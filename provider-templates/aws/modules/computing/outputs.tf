@@ -1,11 +1,11 @@
-output "mybastionhostnic" {
-  value = "${aws_instance.mybastionhost.primary_network_interface_id}"
+output "bastionhostnic" {
+  value = "${aws_instance.bastionhost.primary_network_interface_id}"
 }
 
-output "mybastionhost_public_ip" {
-  value = "${aws_instance.mybastionhost.public_ip}"
+output "bastionhost_public_ip" {
+  value = "${aws_instance.bastionhost.public_ip}"
 }
 
-output "mydbinstance" {
-value = "${aws_instance.mydbinstance[0].id}"
+output "webapp-server-1" {
+value = "${aws_instance.webapp-server-1.id}"
 }

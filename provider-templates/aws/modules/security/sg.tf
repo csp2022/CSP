@@ -1,7 +1,7 @@
 
 ##############################################  Security Groups ########################
-resource "aws_security_group" "mybastionsg" {
-  name        = "mybastionsg"
+resource "aws_security_group" "bastion-sg" {
+  name        = "bastion-sg"
   description = "Allow only for 22 port"
   vpc_id = "${var.myvpc}"
   ingress {
@@ -18,13 +18,13 @@ resource "aws_security_group" "mybastionsg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "mybastionsg"
+    Name = "bastion-sg"
   }
 }
 
 
-resource "aws_security_group" "mysmpdbsg" {
-  name        = "mysmpdbsg"
+resource "aws_security_group" "webapp-sg" {
+  name        = "webapp-sg"
   description = "Allow only for 22 port"
   vpc_id = "${var.myvpc}"
   ingress {
@@ -32,7 +32,7 @@ resource "aws_security_group" "mysmpdbsg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    security_groups = ["${aws_security_group.mybastionsg.id}"]
+    security_groups = ["${aws_security_group.bastion-sg.id}"]
   }
   egress {
     from_port   = 0
@@ -41,13 +41,13 @@ resource "aws_security_group" "mysmpdbsg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "mysmpdbsg"
+    Name = "webapp-sg"
   }
 }
 
 ##############################################  Security group for rds instance ########################
-resource "aws_security_group" "websg" {
-  name        = "websg"
+resource "aws_security_group" "db-sg" {
+  name        = "db-sg"
   description = "Allow all traffic"
   vpc_id ="${var.myvpc}"
   ingress {
@@ -64,6 +64,6 @@ resource "aws_security_group" "websg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "websg"
+    Name = "db-sg"
   }
 }

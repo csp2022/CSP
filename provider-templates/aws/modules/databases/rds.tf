@@ -8,8 +8,8 @@ resource "aws_db_instance" "mysqldb" {
   name                 = "cloudstones"
   username             = "cloud"
   password             = "Stones_123"
-  db_subnet_group_name = "${var.mydbsubnetgroup}"
-  vpc_security_group_ids = ["${var.websg}"]
+  db_subnet_group_name = "${var.db-subnet-group}"
+  vpc_security_group_ids = ["${var.db-sg}"]
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
 #  tags={

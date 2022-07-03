@@ -1,8 +1,8 @@
 
 ############################################## NACL rules ########################
-resource "aws_network_acl" "mybastionnacl" {
+resource "aws_network_acl" "bastion-nacl" {
   vpc_id = "${var.myvpc}"
-  subnet_ids = ["${var.mypublicsubnet}"]
+  subnet_ids = ["${var.lb-subnet1}"]
 
   ingress {
     from_port  = 0
@@ -24,14 +24,14 @@ resource "aws_network_acl" "mybastionnacl" {
     
   }
   tags = {
-    Name = "mybastionnacl"
+    Name = "bastion-nacl"
   }
 }
 
 
-resource "aws_network_acl" "mysmpdbnacl" {
+resource "aws_network_acl" "webapp-nacl" {
   vpc_id = "${var.myvpc}"
-  subnet_ids = ["${var.myprivatesubnet}"]
+  subnet_ids = ["${var.webapp-subnet1}"]
 
   ingress {
     from_port  = 0
@@ -53,7 +53,7 @@ resource "aws_network_acl" "mysmpdbnacl" {
     
   }
   tags = {
-    Name = "mysmpdbnacl"
+    Name = "webapp-nacl"
   }
 }
 

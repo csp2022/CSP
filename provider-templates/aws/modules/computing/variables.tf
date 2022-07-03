@@ -1,4 +1,4 @@
-variable "mypublicsubnet"{
+variable "lb-subnet1"{
 type = string
 }
 
@@ -6,7 +6,11 @@ variable "lb-subnet2"{
 type = string
 }
 
-variable "myprivatesubnet"{
+variable "webapp-subnet1"{
+ type = string 
+}
+
+variable "webapp-subnet2"{
  type = string 
 }
 
@@ -18,10 +22,10 @@ variable "mykp"{
  type = string 
 }
 
-variable "mybastionsg"{
+variable "bastion-sg"{
 type = string
 }
 
-variable "mysmpdbsg"{
+variable "webapp-sg"{
  type = string 
 }

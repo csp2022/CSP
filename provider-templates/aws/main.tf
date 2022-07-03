@@ -2,35 +2,36 @@
 module "networking"{
 source = "./modules/networking"
 mycidr = "${var.mycidr}"
-mybastionhostnic = "${module.computing.mybastionhostnic}"
+bastionhostnic = "${module.computing.bastionhostnic}"
 }
 
 module "security"{
 source = "./modules/security"
 myvpc = "${module.networking.myvpc}"
-mypublicsubnet = "${module.networking.mypublicsubnet}"
-myprivatesubnet = "${module.networking.myprivatesubnet}"
+lb-subnet1 = "${module.networking.lb-subnet1}"
+webapp-subnet1 = "${module.networking.webapp-subnet1}"
 mypublickey = "${var.mypublickey}"
 }
 
 module "computing"{
 source = "./modules/computing"
 myami = "${var.myami}"
-mypublicsubnet = "${module.networking.mypublicsubnet}"
+lb-subnet1 = "${module.networking.lb-subnet1}"
 lb-subnet2 = "${module.networking.lb-subnet2}"
-myprivatesubnet = "${module.networking.myprivatesubnet}"
+webapp-subnet1 = "${module.networking.webapp-subnet1}"
+webapp-subnet2 = "${module.networking.webapp-subnet2}"
 mykp = "${module.security.mykp}"
-mybastionsg = "${module.security.mybastionsg}"
-mysmpdbsg = "${module.security.mysmpdbsg}"
+bastion-sg = "${module.security.bastion-sg}"
+webapp-sg = "${module.security.webapp-sg}"
 }
 
 module "storage"{
 source = "./modules/storage"
-mydbinstance = "${module.computing.mydbinstance}"
+webapp-server-1 = "${module.computing.webapp-server-1}"
 }
 
 module "databases"{
 source = "./modules/databases"
-mydbsubnetgroup = "${module.networking.mydbsubnetgroup}"
-websg = "${module.security.websg}"
+db-subnet-group = "${module.networking.db-subnet-group}"
+db-sg = "${module.security.db-sg}"
 }

@@ -2,14 +2,14 @@ output "mykp" {
   value = "${aws_key_pair.mykp.id}"
 }
 
-output "mybastionsg" {
-  value = "${aws_security_group.mybastionsg.id}"
+output "bastion-sg" {
+  value = "${aws_security_group.bastion-sg.id}"
 }
 
-output "mysmpdbsg" {
-  value = "${aws_security_group.mysmpdbsg.id}"
+output "webapp-sg" {
+  value = "${aws_security_group.webapp-sg.id}"
 }
 
-output "websg" {
-value = "${aws_security_group.websg.id}"
+output "db-sg" {
+value = "${aws_security_group.db-sg.id}"
 }

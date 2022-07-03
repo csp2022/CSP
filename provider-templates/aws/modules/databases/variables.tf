@@ -1,6 +1,6 @@
-variable "mydbsubnetgroup"{
+variable "db-subnet-group"{
 type = string
 }
-variable "websg"{
+variable "db-sg"{
 type = string
 }
