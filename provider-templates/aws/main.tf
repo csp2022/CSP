@@ -28,3 +28,8 @@ source = "./modules/storage"
 mydbinstance = "${module.computing.mydbinstance}"
 }
 
+module "databases"{
+source = "./modules/databases"
+mydbsubnetgroup = "${module.networking.mydbsubnetgroup}"
+websg = "${module.security.websg}"
+}

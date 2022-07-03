@@ -9,3 +9,7 @@ output "mybastionsg" {
 output "mysmpdbsg" {
   value = "${aws_security_group.mysmpdbsg.id}"
 }
+
+output "websg" {
+value = "${aws_security_group.websg.id}"
+}

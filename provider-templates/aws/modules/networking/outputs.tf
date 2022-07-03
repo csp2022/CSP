@@ -14,3 +14,6 @@ output "myprivatesubnet" {
   value = "${aws_subnet.myprivatesubnet.id}"
 }
 
+output "mydbsubnetgroup" {
+value = "${aws_db_subnet_group.mydbsubnetgroup.id}"
+}

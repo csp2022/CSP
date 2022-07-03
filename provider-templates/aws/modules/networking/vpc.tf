@@ -68,3 +68,33 @@ resource "aws_route_table_association" "privatertba"{
 route_table_id = "${aws_route_table.privatertb.id}"
 subnet_id = "${aws_subnet.myprivatesubnet.id}"
 }
+
+
+####################################### AWS RDS DB subnet group ##############################
+
+
+resource "aws_subnet" "rds_subnet1" {
+  vpc_id       = "${aws_vpc.myvpc.id}"
+  cidr_block = "10.0.50.0/24"
+  availability_zone = "us-east-1e"
+  tags = {
+    Name = "rds-subnet1"
+  }
+}
+
+resource "aws_subnet" "rds_subnet2" {
+  vpc_id       = "${aws_vpc.myvpc.id}"
+  cidr_block = "10.0.60.0/24"
+  availability_zone = "us-east-1f"
+  tags = {
+    Name = "rds-subnet2"
+  }
+}
+
+resource "aws_db_subnet_group" "mydbsubnetgroup" {
+  name       = "mydbsubnetgroup"
+  subnet_ids = ["${aws_subnet.rds_subnet1.id}","${aws_subnet.rds_subnet2.id}"]
+  tags = {
+    Name = "My DB subnet group"
+  }
+}
