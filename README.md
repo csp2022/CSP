@@ -28,7 +28,9 @@ Step 1: Authentication to AWS
 
 $vi aws_export.sh
 
-export AWS_ACCESS_KEY_ID="" && export AWS_SECRET_ACCESS_KEY=""
+export AWS_ACCESS_KEY_ID="" 
+
+export AWS_SECRET_ACCESS_KEY=""
 
 $source aws_export.sh
 
@@ -44,13 +46,13 @@ $cd CSP/provider_templates/aws
 
 $ssh-keygen
 
-$vi aws_dev.json
+$vi ../../clutser-templates/aws_dev.json
 
 $terraform init .
 
 $terraform validate 
 
-$terraform apply -var-file aws_dev.json
+$terraform apply -var-file ../../clutser-templates/aws_dev.json
 
 login to bastionhost
 
