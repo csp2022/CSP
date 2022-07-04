@@ -1,7 +1,3 @@
-variable "webapp-userdata"{
-type = string
-}
-
 variable "lb-subnet1"{
 type = string
 }

@@ -34,7 +34,7 @@ user_data = <<EOF
 
      sudo yum install git -y
      
-     sudo git clone https://github.com/csporg/webapp.git && cd webapp/src/flask
+     sudo git clone https://github.com/csp2022/CSP.git && cd CSP/utils/flask
 
      sudo systemctl start docker && sudo groupadd docker && sudo usermod -aG docker $USER && sudo chmod 777 /var/run/docker.sock
 
@@ -58,7 +58,6 @@ ebs_block_device {
   volume_type = "gp2"
   volume_size = "10"
   }
-#user_data = "${var.webapp-userdata}"
 user_data = <<EOF
 #!/bin/sh
      sudo touch /home/centos/testing.txt
