@@ -5,7 +5,7 @@ resource "aws_db_instance" "mysqldb" {
   engine               = "mysql"
   engine_version       = "5.7"
   instance_class       = "db.t3.micro"
-  name                 = "cloudstones"
+  db_name                 = "cloudstones"
   username             = "cloud"
   password             = "Stones_123"
   db_subnet_group_name = "${var.db-subnet-group}"

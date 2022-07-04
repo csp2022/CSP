@@ -1,4 +1,8 @@
 #########################################  Importing  modules #################################
+module "cloudinit"{
+source = "./modules/cloudinit"
+}
+
 module "networking"{
 source = "./modules/networking"
 mycidr = "${var.mycidr}"
@@ -23,6 +27,7 @@ webapp-subnet2 = "${module.networking.webapp-subnet2}"
 mykp = "${module.security.mykp}"
 bastion-sg = "${module.security.bastion-sg}"
 webapp-sg = "${module.security.webapp-sg}"
+webapp-userdata = "${module.cloudinit.webapp-userdata}"
 }
 
 module "storage"{
@@ -35,3 +40,4 @@ source = "./modules/databases"
 db-subnet-group = "${module.networking.db-subnet-group}"
 db-sg = "${module.security.db-sg}"
 }
+

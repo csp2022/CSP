@@ -1,6 +1,6 @@
 ################################################  Storage modules #####################################
 resource "aws_ebs_volume" "myebs" {
-availability_zone = "us-east-1c"
+availability_zone = "us-east-1a"
 size = "11"
 }
 

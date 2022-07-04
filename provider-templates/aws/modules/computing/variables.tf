@@ -1,3 +1,7 @@
+variable "webapp-userdata"{
+type = string
+}
+
 variable "lb-subnet1"{
 type = string
 }
@@ -29,3 +33,5 @@ type = string
 variable "webapp-sg"{
  type = string 
 }
+
+
