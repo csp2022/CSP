@@ -42,7 +42,7 @@ set AWS_SECRET_ACCESS_KEY=""
 
 $git clone https://github.com/csp2022/CSP.git
 
-$cd CSP/provider_templates/aws
+$cd CSP/provider-templates/aws
 
 $ssh-keygen
 
