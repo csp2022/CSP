@@ -38,9 +38,9 @@ set AWS_ACCESS_KEY_ID=""
 
 set AWS_SECRET_ACCESS_KEY=""
 
-$git clone https://github.com/csp2022/CSP.git -b dev
+$git clone https://github.com/csp2022/CSP.git
 
-$cd CSP/aws
+$cd CSP/provider_templates/aws
 
 $ssh-keygen
 
@@ -51,6 +51,16 @@ $terraform init .
 $terraform validate 
 
 $terraform apply -var-file aws_dev.json
+
+login to bastionhost
+
+sudo yum install mysql -y
+
+mysql -h mysqldb.c07sujkvnfl6.us-east-1.rds.amazonaws.com -P 3306 -u cloud -p cloudstones
+
+CREATE TABLE student ( id int NOT NULL AUTO_INCREMENT, first_name varchar(255) DEFAULT NULL, last_name varchar(255) DEFAULT NULL, email_id varchar(255) DEFAULT NULL, PRIMARY KEY (id) ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO student VALUES (1,'krishna','maram','krishnamaram2@gmail.com');
 
 Azure
 =======
