@@ -56,6 +56,12 @@ $terraform apply -var-file ../../clutser-templates/aws_dev.json
 
 login to bastionhost
 
+eval ssh-agent
+
+ssh-add -k .pem
+
+ssh -A centos@publicip
+
 sudo yum install mysql -y
 
 mysql -h mysqldb.c07sujkvnfl6.us-east-1.rds.amazonaws.com -P 3306 -u cloud -p cloudstones
