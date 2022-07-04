@@ -9,3 +9,7 @@ output "bastionhost_public_ip" {
 output "webapp-server-1" {
 value = "${aws_instance.webapp-server-1.id}"
 }
+
+output "elb_dns_name" {
+value = "${aws_elb.elb-server.dns_name}"
+}
