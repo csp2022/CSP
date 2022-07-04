@@ -2,9 +2,3 @@
 provider "aws"{
 region = "${var.myregion}"
 }
-
-provider "template"{
-}
-
-
-
