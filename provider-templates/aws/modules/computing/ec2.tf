@@ -6,6 +6,7 @@ subnet_id = "${var.lb-subnet1}"
 associate_public_ip_address = true
 vpc_security_group_ids = ["${var.bastion-sg}"]
 key_name = "${var.mykp}"
+user_data = "${var.userdata}"
 #key_name = "mikp"
 #root_block_device {
 #  volume_type = "standard"

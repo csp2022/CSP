@@ -13,6 +13,10 @@ webapp-subnet1 = "${module.networking.webapp-subnet1}"
 mypublickey = "${var.mypublickey}"
 }
 
+module "cloudinit"{
+source = "./modules/cloudinit"
+}
+
 module "computing"{
 source = "./modules/computing"
 myami = "${var.myami}"
@@ -23,6 +27,9 @@ webapp-subnet2 = "${module.networking.webapp-subnet2}"
 mykp = "${module.security.mykp}"
 bastion-sg = "${module.security.bastion-sg}"
 webapp-sg = "${module.security.webapp-sg}"
+mybucketforlambdafunctions = "${module.storage.mybucketforlambdafunctions}"
+object_in_bucket = "${module.storage.object_in_bucket}"
+userdata = "${module.cloudinit.userdata}"
 }
 
 module "storage"{

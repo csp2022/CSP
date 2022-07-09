@@ -30,4 +30,18 @@ variable "webapp-sg"{
  type = string 
 }
 
+variable "mybucketforlambdafunctions"{
+ type = string 
+}
+
+variable "object_in_bucket"{
+ type = string 
+}
+
+variable "userdata"{
+ type = string 
+}
+
+
+
 
