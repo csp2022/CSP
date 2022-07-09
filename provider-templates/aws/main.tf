@@ -43,3 +43,7 @@ db-subnet-group = "${module.networking.db-subnet-group}"
 db-sg = "${module.security.db-sg}"
 }
 
+module "monitoring"{
+source = "./modules/monitoring"
+lambdaarn = "${module.computing.lambdaarn}"
+}

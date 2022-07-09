@@ -13,3 +13,7 @@ value = "${aws_instance.webapp-server-1.id}"
 output "elb_dns_name" {
 value = "${aws_elb.elb-server.dns_name}"
 }
+
+output "lambdaarn" {
+value = "${aws_lambda_function.test_lambda.arn}"
+}
