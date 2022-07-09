@@ -44,7 +44,7 @@ $git clone https://github.com/csp2022/CSP.git
 
 $cd CSP/provider-templates/aws
 
-$pip install pymysql -t pyhton --upgrade --no-user
+$pip install pymysql -t python --upgrade --no-user
 
 $mv python modules/computing/scripts
 
