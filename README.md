@@ -99,17 +99,25 @@ $source azure_export.sh
 
 step 1: clone repo
 
-$git clone https://github.com/csp2022/CSP.git -b dev
+$git clone https://github.com/csp2022/CSP.git -b master
 
 Step 2: move to directory
 
-cd CSP/azure
+cd CSP/provider_templates/azure
 
 $terraform init .
 
 $terraform validate 
 
 $terraform apply -var-file azure_dev.json
+
+mysql --host=mysqldbsrinivas.mysql.database.azure.com --user=srinivas@mysqldbsrinivas -p
+
+create database cloudstones
+
+CREATE TABLE student ( id int NOT NULL AUTO_INCREMENT, first_name varchar(255) DEFAULT NULL, last_name varchar(255) DEFAULT NULL, email_id varchar(255) DEFAULT NULL, PRIMARY KEY (id) ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO student VALUES (1,'krishna','maram','krishnamaram2@gmail.com');
 
 
 GCP
