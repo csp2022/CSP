@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "myrg" {
-  name     = "myrg1"
+  name     = "myrg"
   location = "${var.mylocation}"
 }
 
@@ -66,6 +66,7 @@ resource "azurerm_linux_virtual_machine" "myvm" {
   network_interface_ids = [azurerm_network_interface.mynic.id]
   size                = "Standard_F2"
   admin_username      = "adminuser"
+  
 
   source_image_reference {
     publisher = "Canonical"
@@ -83,4 +84,103 @@ resource "azurerm_linux_virtual_machine" "myvm" {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
+
+  connection {
+        host = self.public_ip_address
+        user = "adminuser"
+        type = "ssh"
+        private_key = "${file("~/Downloads/mykp.pem")}"
+        timeout = "4m"
+        agent = false
+    }
+
+  provisioner "remote-exec" {
+        inline = [
+      "sudo apt update",
+
+      "sudo apt install docker.io -y",
+
+      "sudo usermod -aG docker $USER && sudo chmod 777 /var/run/docker.sock",
+      
+      "sudo git clone https://github.com/csp2022/CSP.git && cd CSP/utils/flask",
+
+      "sudo docker image build -t flask .",
+
+      "sudo docker run -d --name flask -p 5001:5001 flask"
+        ]
+    }
+}
+
+resource "azurerm_public_ip" "example" {
+  name                = "PublicIPForLB"
+  resource_group_name = azurerm_resource_group.myrg.name
+  location            = azurerm_resource_group.myrg.location
+  allocation_method   = "Static"
+  sku = "Standard"
+}
+
+resource "azurerm_lb" "example" {
+  name                = "TestLoadBalancer"
+  resource_group_name = azurerm_resource_group.myrg.name
+  location            = azurerm_resource_group.myrg.location
+  sku = "Standard"
+
+  frontend_ip_configuration {
+    name                 = "PublicIPAddress"
+    public_ip_address_id = azurerm_public_ip.example.id
+  }
+}
+
+resource "azurerm_lb_rule" "example" {
+  loadbalancer_id                = azurerm_lb.example.id
+  name                           = "LBRule"
+  protocol                       = "Tcp"
+  frontend_port                  = 80
+  backend_port                   = 5001
+  frontend_ip_configuration_name = "PublicIPAddress"
+  backend_address_pool_ids = [azurerm_lb_backend_address_pool.example.id]
+}
+
+resource "azurerm_lb_backend_address_pool" "example" {
+  loadbalancer_id = azurerm_lb.example.id
+  name            = "BackEndAddressPool"
+}
+
+resource "azurerm_lb_backend_address_pool_address" "example" {
+  name                    = "example"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.example.id
+  virtual_network_id      = azurerm_virtual_network.myvnet.id
+  ip_address              = azurerm_linux_virtual_machine.myvm.private_ip_address
+}
+
+
+
+
+resource "azurerm_mysql_server" "example" {
+  name                = "mysqldbsrinivas"
+  resource_group_name = azurerm_resource_group.myrg.name
+  location            = azurerm_resource_group.myrg.location
+
+  administrator_login          = "srinivas"
+  administrator_login_password = "KrishnaJyothi_123"
+
+  sku_name   = "B_Gen5_2"
+  storage_mb = 5120
+  version    = "5.7"
+
+  auto_grow_enabled                 = true
+  backup_retention_days             = 7
+  geo_redundant_backup_enabled      = false
+  infrastructure_encryption_enabled = false
+  public_network_access_enabled     = true
+  ssl_enforcement_enabled           = false
+  ssl_minimal_tls_version_enforced  = "TLSEnforcementDisabled"
+}
+
+resource "azurerm_mysql_firewall_rule" "mysqldfwrule" {
+  name                = "office"
+  resource_group_name = azurerm_resource_group.myrg.name
+  server_name         = azurerm_mysql_server.example.name
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
 }
