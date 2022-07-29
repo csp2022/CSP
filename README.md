@@ -130,7 +130,7 @@ IAM -> Service accounts -> create service account -> service account name : mysa
 
 $vi gcp_export.sh
 
-export GOOGLE_APPLICATION_CREDENTIALS="/home/centos/gcp.json"
+export GOOGLE_APPLICATION_CREDENTIALS="./gcp.json"
 
 $source gcp_export.sh
 
@@ -138,14 +138,25 @@ Step 2: Create project(till now I am unable to create project using terraform du
 
 step 1: clone repo
 
-$git clone https://github.com/csp2022/CSP.git -b dev
+$git clone https://github.com/csp2022/CSP.git -b master
 
 Step 2: move to directory
 
-cd CSP/gcp
+cd CSP/provider_templates/gcp
 
 $terraform init 
 
 $terraform validate 
 
-$terraform apply -var-file gcp_dev.json
+$terraform apply -var-file ../../clutser-templates/gcp_dev.json
+
+sudo apt update
+
+sudo apt install mariadb-server -y
+
+mysql -h <IP> -u krishna -p
+
+
+CREATE TABLE student ( id int NOT NULL AUTO_INCREMENT, first_name varchar(255) DEFAULT NULL, last_name varchar(255) DEFAULT NULL, email_id varchar(255) DEFAULT NULL, PRIMARY KEY (id) ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO student VALUES (1,'krishna','maram','krishnamaram2@gmail.com');
