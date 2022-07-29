@@ -150,6 +150,8 @@ $terraform validate
 
 $terraform apply -var-file ../../clutser-templates/gcp_dev.json
 
+enable in GCP : Cloud SQL Admin API
+
 sudo apt update
 
 sudo apt install mariadb-server -y
