@@ -103,7 +103,7 @@ $git clone https://github.com/csp2022/CSP.git -b master
 
 Step 2: move to directory
 
-cd CSP/provider_templates/azure
+cd CSP/provider-templates/azure
 
 $terraform init .
 
@@ -142,7 +142,7 @@ $git clone https://github.com/csp2022/CSP.git -b master
 
 Step 2: move to directory
 
-cd CSP/provider_templates/gcp
+cd CSP/provider-templates/gcp
 
 $terraform init 
 
@@ -150,7 +150,7 @@ $terraform validate
 
 $terraform apply -var-file ../../clutser-templates/gcp_dev.json
 
-enable in GCP : Cloud SQL Admin API
+Note: enable in GCP : Cloud SQL Admin API
 
 sudo apt update
 
