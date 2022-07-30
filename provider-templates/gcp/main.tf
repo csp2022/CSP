@@ -28,6 +28,12 @@ resource "google_compute_firewall" "myfw" {
 source_ranges = ["0.0.0.0/0"]
 }
 
+resource "google_compute_address" "static" {
+  name = "vm-public-address"
+  region = "us-west2"
+  depends_on = [ google_compute_firewall.myfw ]
+}
+
 resource "google_compute_instance" "myinstance" {
   name         = "myinstance"
   machine_type = "e2-medium"
@@ -45,10 +51,33 @@ resource "google_compute_instance" "myinstance" {
     subnetwork = google_compute_subnetwork.mysubnet.id
     access_config {
       // Ephemeral public IP
+      nat_ip = google_compute_address.static.address
     }
 }
-
 metadata = {
   ssh-keys ="${var.mysshuser}:${var.mykey}"
 }
+
+ provisioner "remote-exec" {
+    connection {
+      host        = google_compute_address.static.address
+      type        = "ssh"
+      user        = "gcp-user"
+      timeout     = "500s"
+      private_key = file("~/Downloads/mykp.pem")
+    }
+    inline = [
+      "sudo apt update",
+
+      "sudo apt install docker.io -y",
+
+      "sudo usermod -aG docker $USER && sudo chmod 777 /var/run/docker.sock",
+      
+      "sudo git clone https://github.com/csp2022/CSP.git && cd CSP/utils/flask",
+
+      "sudo docker image build -t flask .",
+
+      "sudo docker run -d --name flask -p 5001:5001 flask"
+        ]
+  }
 }
